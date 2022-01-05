@@ -1,0 +1,68 @@
+LOOP PROJET
+-----------
+Prog un jeu de loop, étape par étape pour incrémenter des choses de plus en plus complexe.
+(c'est pour nous ça, car on sera plus motivé à faire un petit truc et l'aggrandir qu'un gros truc d'un coup)
+
+concept :
+---------
+On progresse par zone
+le but est d'améliorer un personnage (un seul pour le moment)
+il y a plusieurs actions basique et des actions différentes par zone (on pourra par la suite changer par zone)
+
+Stats du perso : 
+- Santé  10 (point de vie)
+- Force   1 (dégât physique) 
+- Vitesse 0 (vitesse d'action en combat)
+- Armure  0 (réduit les dégâts %) demande des objets pour être augmentée
+- Focus   0 (pour capacité spéciale à débloquer)
+- Mana    0 (pour lancer des sorts à débloquer)
+
+Actions : 
+---------
+- Avancer le temps xX = +X action (voir système d'action plus bas)
+- Entrainnement (Mannequin : x10 = Force +1) (d'autre PNJ possible, soldat, maître d'arme pour meilleur bonus)
+- Couper du bois x10 = +1 Bois
+- Miner du fer x10 = +1 Minerai
+- Forge = fabriquer des armes et armures (recette basique au départ, d'autre à trouver)
+- Atelier fabriquer des outils (bonus pour miner ou couper du bois ?)
+- Vendre : 10 bois/minerai = +1 Gold
+- Lire à la bibliothèque = Débloquer et "farmer" l'arbre de talent "Mana" pour apprendre la magie
+- Prier au temple = Débloquer et "farmer" l'arbre de talent "Combat" pour apprendre des capacités
+	un arbre basique, il existe plusieurs arbre à débloquer en magie ou combat (nécessite rencontrer des pnjs etc.)
+- Prendre le bateau = changer de zone 1 ticket = 100 gold
+-etc.
+
+Système d'action :
+------------------
+au début du jeu on démarre avec 1 seule action(1/1), lorsqu'on n'a plus d'action le jeu boucle et recommence au début.
+Avancer le temps permet d'ajouter une action et recharger les actions (2/2), mais fait aussi "avancer" la jauge d'invocation.
+Lorsque la jauge d'invocation arrive à 10, un monstre apparait et il faut le combattre !
+s'il est vaincu on gagne des récompenses, et une nouvelle jauge(20 max) apparait avec des monstres de plus en plus balèse.
+
+Combats : 
+---------
+Le combat se passe automatiquement par passe, et de la même manière on programme une boucle de combat.
+- Attaquer
+- Défendre
+- lancer un sort 
+- utiliser une capacité ou un objet.
+La passe est jouée dans l'ordre de vitesse, le plus rapide fait son action et ensuite l'autre puis nouvelle passe.
+En cas d'égalité de vitesse la passe se joue en même temps.
+A chaque fois qu'on tape on gagne du focus (si on l'a débloqué)
+lorsque le focus arrive au bout de sa jauge de focus on gagne un point qui permet de lancer des capacités
+Pour le mana, c'est une jauge déjà pleine qui permet de lancer des sorts, les sorts peuvent mettre plusieurs tour a être lancé.
+L'action défendre permet de limiter les dégâts d'une attaque :
+par exemple lorsque le monstre a atteind sa jauge de focus il lance une grosse attaque qu'il vaut mieux défendre.
+
+Feature :
+---------
+Pouvoir prog les actions dans "groupe" pour les ajouter à la boucle par groupe.
+
+A venir :
+---------
+Possibilité de le faire en multijoueur en gérant un deuxième perso ?
+
+A vos commentaires !
+
+
+
