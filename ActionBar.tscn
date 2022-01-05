@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/actionBar1.png" type="Texture" id=1]
+[ext_resource path="res://assets/actionBar0.png" type="Texture" id=2]
+[ext_resource path="res://fonts/novem___.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/actionButton.png" type="Texture" id=4]
+[ext_resource path="res://ActionBar.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 16, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="ActionBar" type="TextureProgress"]
+margin_right = 32.0
+margin_bottom = 16.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="actionNumber" type="Label" parent="."]
+margin_left = 14.0
+margin_top = 4.0
+margin_right = 38.0
+margin_bottom = 20.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_colors/font_color = Color( 0.243137, 0.243137, 0.243137, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "x88"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="actionImage" type="AnimatedSprite" parent="."]
+position = Vector2( 9, 9 )
+frames = SubResource( 3 )
