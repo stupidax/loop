@@ -1,0 +1,131 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://playButton.gd" type="Script" id=1]
+[ext_resource path="res://assets/actionButtonPressed.png" type="Texture" id=2]
+[ext_resource path="res://assets/actionButtonReady.png" type="Texture" id=3]
+[ext_resource path="res://assets/playButton.png" type="Texture" id=4]
+[ext_resource path="res://stopButton.gd" type="Script" id=5]
+[ext_resource path="res://speedButton.gd" type="Script" id=6]
+[ext_resource path="res://restartButton.gd" type="Script" id=7]
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 4 )
+region = Rect2( 16, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 16, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="loopButton" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playButton" type="TextureButton" parent="."]
+margin_right = 16.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 1 )
+
+[node name="icon" type="AnimatedSprite" parent="playButton"]
+position = Vector2( 8, 8 )
+frames = SubResource( 7 )
+
+[node name="speedButton" type="TextureButton" parent="."]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 6 )
+
+[node name="icon" type="AnimatedSprite" parent="speedButton"]
+position = Vector2( 8, 8 )
+frames = SubResource( 7 )
+frame = 1
+
+[node name="stopButton" type="TextureButton" parent="."]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 5 )
+
+[node name="icon" type="AnimatedSprite" parent="stopButton"]
+position = Vector2( 8, 8 )
+frames = SubResource( 7 )
+frame = 4
+
+[node name="restartButton" type="TextureButton" parent="."]
+margin_left = 60.0
+margin_right = 76.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="icon" type="AnimatedSprite" parent="restartButton"]
+position = Vector2( 8, 8 )
+frames = SubResource( 7 )
+frame = 2
+
+[connection signal="button_down" from="playButton" to="playButton" method="_on_playButton_button_down"]
+[connection signal="button_up" from="playButton" to="playButton" method="_on_playButton_button_up"]
+[connection signal="pressed" from="playButton" to="playButton" method="_on_playButton_pressed"]
+[connection signal="button_down" from="speedButton" to="speedButton" method="_on_playButton_button_down"]
+[connection signal="button_up" from="speedButton" to="speedButton" method="_on_playButton_button_up"]
+[connection signal="pressed" from="speedButton" to="speedButton" method="_on_playButton_pressed"]
+[connection signal="button_down" from="stopButton" to="stopButton" method="_on_playButton_button_down"]
+[connection signal="button_up" from="stopButton" to="stopButton" method="_on_playButton_button_up"]
+[connection signal="pressed" from="stopButton" to="stopButton" method="_on_playButton_pressed"]
+[connection signal="button_down" from="restartButton" to="restartButton" method="_on_playButton_button_down"]
+[connection signal="button_up" from="restartButton" to="restartButton" method="_on_playButton_button_up"]
+[connection signal="pressed" from="restartButton" to="restartButton" method="_on_playButton_pressed"]
