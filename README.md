@@ -4,3 +4,5 @@ Explication des mises à jour :
   - Nico : hierarchie des dossiers : scènes, assest, scripts
   - Raph : choix sur DA (directoin artistique) : choix d'une palette, choix d'un design d'interface et d'action
   - Ron : organisation des tâches et gestion du projet
+  - MOUS : Help avec github : Pull & Push Request
+  - Papagei : t'es où ?
