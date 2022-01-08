@@ -1,20 +1,28 @@
-extends Button
+extends TextureButton
 
+signal addNewAction(type)
+var type = ""
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-signal addNewAction
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	self.connect("addNewAction",get_node("/root/Main"),"_addNewAction")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+	connect("addNewAction",get_node("/root/Game"),"_addNewAction")
+	if name == "time":
+		$Icon.set_frame(0)
+		type = "time"
+	elif name == "wood":
+		$Icon.set_frame(2)
+		type = "wood"
+	elif name == "ore":
+		$Icon.set_frame(3)
+		type = "ore"
+	elif name == "train":
+		$Icon.set_frame(1)
+		type = "train"
 
 func _on_ActionButton_pressed():
-	emit_signal("addNewAction")
+	emit_signal("addNewAction",type)
+
+func _on_ActionButton_button_down():
+	$Icon.set_frame($Icon.frame + 4)
+
+func _on_ActionButton_button_up():
+	$Icon.set_frame($Icon.frame - 4)

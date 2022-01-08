@@ -1,21 +1,28 @@
 extends TextureProgress
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var speed = 100
-signal fadeOut
+var loopStarted = false
+var sameActionNumber = 0
+var type = ""
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	self.connect("fadeOut",get_node("/root/Main"),"_fadeOut")
+	if sameActionNumber == 0:
+		sameActionNumber += 1
+	$actionNumber.text = "x" + str(sameActionNumber)
+	if type == "time":
+		$Icon.set_frame(0)
+	elif type == "wood":
+		$Icon.set_frame(2)
+	elif type == "ore":
+		$Icon.set_frame(3)
+	elif type == "train":
+		$Icon.set_frame(1)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	self.value += speed * delta
-	if value >= 100:
-		emit_signal("fadeOut")
-		queue_free()
+	if loopStarted && value < 100:
+		self.value += speed * delta
+
+func addSameAction():
+	sameActionNumber += 1
+	$actionNumber.text = "x" + str(sameActionNumber)
 
