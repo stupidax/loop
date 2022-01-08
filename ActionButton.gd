@@ -5,18 +5,18 @@ var type = ""
 
 func _ready():
 	connect("addNewAction",get_node("/root/Game"),"_addNewAction")
-	if name == "time":
-		$Icon.set_frame(0)
-		type = "time"
-	elif name == "wood":
-		$Icon.set_frame(2)
-		type = "wood"
-	elif name == "ore":
-		$Icon.set_frame(3)
-		type = "ore"
-	elif name == "train":
-		$Icon.set_frame(1)
-		type = "train"
+	var frameNumber = 0
+	match name:
+		"time":
+			frameNumber = 0
+		"train":
+			frameNumber = 1
+		"wood":
+			frameNumber = 2
+		"ore":
+			frameNumber = 3
+	type = name
+	$Icon.set_frame(frameNumber)
 
 func _on_ActionButton_pressed():
 	emit_signal("addNewAction",type)

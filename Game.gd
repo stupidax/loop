@@ -17,26 +17,18 @@ func _ready():
 
 func _addNewAction(actionType):
 	print(barActionTypeNumber)
-	if barActionTypeNumber == 0:
+	var lastChild = get_child(get_child_count()-1)
+	if barActionTypeNumber > 0 && actionType == lastChild.type:
+		lastChild.addSameAction()
+		actionNumber += 1
+	else:
 		var bar = ActionBar.instance()
-		bar.rect_position.x = 400 - 32
-		bar.rect_position.y = 0 + barActionTypeNumber * 16
-		bar.type = actionType
+		bar.rect_position.x = 368
+		bar.rect_position.y = barActionTypeNumber * 16
 		barActionTypeNumber += 1
 		actionNumber += 1
+		bar.type = actionType
 		add_child(bar)
-	elif barActionTypeNumber > 0:
-		if actionType == get_child(get_child_count()-1).type:
-			get_child(get_child_count()-1).addSameAction()
-			actionNumber += 1
-		else:
-			var bar = ActionBar.instance()
-			bar.rect_position.x = 400 - 32
-			bar.rect_position.y = 0 + barActionTypeNumber * 16
-			barActionTypeNumber += 1
-			actionNumber += 1
-			bar.type = actionType
-			add_child(bar)
 
 func initButtonAction(x,y,actionType):
 	var button = ActionButton.instance()
@@ -54,6 +46,14 @@ func initPlayer():
 func _startLoop():
 	if actionNumber > 0:
 		$ActionBar.loopStarted = true
+
+func _speedLoop():
+	# TODO
+	pass
+	
+func _restartLoop():
+	# TODO
+	pass
 
 func _stopLoop():
 	pass

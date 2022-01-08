@@ -9,14 +9,18 @@ func _ready():
 	if sameActionNumber == 0:
 		sameActionNumber += 1
 	$actionNumber.text = "x" + str(sameActionNumber)
-	if type == "time":
-		$Icon.set_frame(0)
-	elif type == "wood":
-		$Icon.set_frame(2)
-	elif type == "ore":
-		$Icon.set_frame(3)
-	elif type == "train":
-		$Icon.set_frame(1)
+	# this logic should be extracted as it is also used in ActionButton.gd
+	var frameNumber = 0
+	match type:
+		"time":
+			frameNumber = 0
+		"train":
+			frameNumber = 1
+		"wood":
+			frameNumber = 2
+		"ore":
+			frameNumber = 3
+	$Icon.set_frame(frameNumber)
 
 func _process(delta):
 	if loopStarted && value < 100:
